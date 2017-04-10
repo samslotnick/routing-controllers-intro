@@ -7,7 +7,8 @@ class PagesController < ApplicationController
       render :about
     end
     def contest
-      render :contest
+      flash[:notice] = "Sorry, the contest has ended"
+      redirect_to '/welcome'
     end
     before_action :set_kitten_url, only: [:kitten, :kittens]
     def kitten
