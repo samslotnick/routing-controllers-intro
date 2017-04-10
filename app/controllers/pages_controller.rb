@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
     def welcome
-      @header = "Chooo choooo ruby on rails"
+      @header = "Welcome Header Method"
     end
 
     def about
@@ -28,5 +28,15 @@ class PagesController < ApplicationController
   def set_kitten_url
   requested_size = params[:size]
   @kitten_url = "http://lorempixel.com/#{requested_size}/#{requested_size}/cats"
+  end
+
+  def secrets
+    word_request = params[:magic_word]
+    if word_request == "please"
+      render :secrets
+    else
+    flash[:alert] = "Not the magic word"
+    redirect_to '/welcome'
+  end
   end
 end
